@@ -8,7 +8,7 @@ mongoose.connect("mongodb://localhost:27017/albums_db", {
 let albumSchema = new Schema({
     title: {
         type: String,
-        require:true
+        require: true
     },
     artist: {
         type: String

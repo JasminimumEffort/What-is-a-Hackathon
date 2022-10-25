@@ -6,9 +6,9 @@ const cors = require('cors')
 const app = express();
 
 const albumRoutes = require('./routes/albums.route.js');
+app.use(bodyParser.json());
 
 app.use(albumRoutes);
-app.use(bodyParser.json());
 app.use(cors());
 
 app.use((err, req, res, next) => {

@@ -17,7 +17,7 @@ const AddAlbum = () => {
     const updateTitle = (event) => {
     event.preventDefault(); 
     setTitle(event.target.value);
-        };
+    };
 
     // useEffect(() => {
        
@@ -34,7 +34,7 @@ const AddAlbum = () => {
         }};
 
     const AddDeets = async () => {
-        try{await setAlbum() 
+        try{await setAlbum()
             const res = await 
             axios.post("http://localhost:1296/createAlbum", albumData);
         console.log("Response:", res);
@@ -65,20 +65,20 @@ const AddAlbum = () => {
     }
 
     const setAlbum = async () => {
-        const tempData = await {
+        const tempData = {
             "title": title,
             "artist": artist,
             "track_total": trackno,
             "label": label
         }
-        setAlbumData(tempData);
+        await setAlbumData(tempData);
+        console.log(albumData);
     }
 
-    const bigClick = () => {
+    const bigClick = async () => {
         AddDeets();
-        GetDeets();
+        await GetDeets();
     }
-
 
         // Title: "",
         // Artist: "",
@@ -103,10 +103,10 @@ const AddAlbum = () => {
                 <input type="text" className="form-control" id = "AlbumLabel" onChange = {(e) => {setLabel(e.target.value)}} />
                 <br/>
                 <br/>
-                <button type = "submit" onClick = {() => bigClick()}>CREATE ALBUM</button>
+                <button type = "submit" onClick = {bigClick}>CREATE ALBUM</button>
             </div>
-
         </form>
+
         <div className="row row-cols-3 g-4">
                 {allAlbums.map((album) => (
                     <Album
