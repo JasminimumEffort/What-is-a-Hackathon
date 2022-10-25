@@ -17,6 +17,15 @@ const AddAlbum = () => {
     setTitle(event.target.value);
         };
 
+    const GetDeets = async () => {
+        try{
+            const res = await axios.get("http://localhost:1296/GetAllAlbums");
+            console.log("Response:", res);
+        }catch(err){
+            
+        }
+    }
+
     const AddDeets = async () => {
         try{ const res = await 
             axios.post("http://localhost:1296/createAlbum", albumData);
@@ -47,6 +56,10 @@ const AddAlbum = () => {
         }
     }
 
+    const setAlbum = async () => {
+        setAlbumData 
+    }
+
 
 
         // Title: "",
@@ -60,16 +73,16 @@ const AddAlbum = () => {
             Add an Album:
             <div className = "form-group">
                 <label> Album name: </label>
-                <input type="text" className="form-control" id = "AlbumName" />
+                <input type="text" className="form-control" id = "AlbumName" onChange = {(e) => {setTitle(e.target.value)}} />
                 <br/>
                 <label> Album Artist: </label>
-                <input type="text" className="form-control" id = "AlbumArtist" />
+                <input type="text" className="form-control" id = "AlbumArtist" onChange = {(e) => {setArtist(e.target.value)}}/>
                 <br/>
                 <label> Total Tracks: </label>
-                <input type="text" className="form-control" id = "AlbumTrackTotal" />
+                <input type="text" className="form-control" id = "AlbumTrackTotal" onChange = {(e) => {setTrackno(e.target.value)}} />
                 <br/>
                 <label> Record Label: </label>
-                <input type="text" className="form-control" id = "AlbumLabel" />
+                <input type="text" className="form-control" id = "AlbumLabel" onChange = {(e) => {setLabel(e.target.value)}} />
                 <br/>
                 <br/>
                 <button type = "submit">CREATE ALBUM</button>
