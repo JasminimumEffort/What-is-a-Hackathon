@@ -76,8 +76,8 @@ const AddAlbum = () => {
     }
 
     const bigClick = async () => {
-        AddDeets();
-        await GetDeets();
+        // AddDeets();
+        GetDeets();
     }
 
         // Title: "",
