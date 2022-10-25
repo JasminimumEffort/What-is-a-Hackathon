@@ -5,7 +5,7 @@ let mongoDb = require('./db');
 const cors = require('cors')
 const app = express();
 
-const albumRoutes = require('./routes/albums.route');
+const albumRoutes = require('./routes/albums.route.js');
 
 app.use(albumRoutes);
 app.use(bodyParser.json());

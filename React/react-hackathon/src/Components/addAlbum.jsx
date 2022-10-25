@@ -1,6 +1,7 @@
 import React from 'react'; 
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Album from './albumTemplate';
 
 
 const AddAlbum = () => {
@@ -9,25 +10,32 @@ const AddAlbum = () => {
     const [label, setLabel] = useState("");
     const [artist, setArtist] = useState("");
     const [trackno, setTrackno] = useState("");
-    const [albumData, setAlbumData] = useState([]);
+    const [albumData, setAlbumData] = useState({});
     const [id, setId] = useState("");
+    const [allAlbums, setAllAlbums] = useState([]);
 
     const updateTitle = (event) => {
     event.preventDefault(); 
     setTitle(event.target.value);
         };
 
+    // useEffect(() => {
+       
+    //  }
+    // GetDeets()}, [title]);
+
     const GetDeets = async () => {
         try{
             const res = await axios.get("http://localhost:1296/GetAllAlbums");
             console.log("Response:", res);
+            setAllAlbums(res);
         }catch(err){
-            
-        }
-    }
+
+        }};
 
     const AddDeets = async () => {
-        try{ const res = await 
+        try{await setAlbum() 
+            const res = await 
             axios.post("http://localhost:1296/createAlbum", albumData);
         console.log("Response:", res);
         setAlbumData(res.data);
@@ -57,9 +65,19 @@ const AddAlbum = () => {
     }
 
     const setAlbum = async () => {
-        setAlbumData 
+        const tempData = await {
+            "title": title,
+            "artist": artist,
+            "track_total": trackno,
+            "label": label
+        }
+        setAlbumData(tempData);
     }
 
+    const bigClick = () => {
+        AddDeets();
+        GetDeets();
+    }
 
 
         // Title: "",
@@ -85,10 +103,22 @@ const AddAlbum = () => {
                 <input type="text" className="form-control" id = "AlbumLabel" onChange = {(e) => {setLabel(e.target.value)}} />
                 <br/>
                 <br/>
-                <button type = "submit">CREATE ALBUM</button>
+                <button type = "submit" onClick = {() => bigClick()}>CREATE ALBUM</button>
             </div>
 
         </form>
+        <div className="row row-cols-3 g-4">
+                {allAlbums.map((album) => (
+                    <Album
+                        key={album.id}
+                        title={album.title}
+                        artist={album.artist}
+                        label={album.label}
+                        trackno={album.trackno}
+                    />
+
+                ))}
+        </div>
         </div>
     );
 };
