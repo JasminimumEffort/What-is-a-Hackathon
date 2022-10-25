@@ -28,7 +28,7 @@ const AddAlbum = () => {
         try{
             const res = await axios.get("http://localhost:1296/GetAllAlbums");
             console.log("Response:", res);
-            setAllAlbums(res);
+            setAllAlbums(res.data);
         }catch(err){
 
         }};
