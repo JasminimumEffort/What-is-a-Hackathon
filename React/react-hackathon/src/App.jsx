@@ -1,7 +1,7 @@
 import React from 'react';
 import'./App.css';
 import ViewAlbums from './Components/viewAlbums';
-// import AddAlbum from './Components/addAlbums';
+import AddAlbum from './Components/addAlbum';
 import InputFields from './Components/InputFields';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -11,9 +11,9 @@ import {
 function App1(){
     return(
         <div>
-            {/* <AddAlbum/> */}
-            {/* <ViewAlbums/> */}
-            <InputFields/>
+            <AddAlbum/>
+            {/* <ViewAlbums/>
+            <InputFields/> */}
         </div>
     )
 };
