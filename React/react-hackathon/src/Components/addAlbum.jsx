@@ -78,10 +78,6 @@ const AddAlbum = () => {
                     <button type="submit">CREATE ALBUM</button>
                 </div>
             </form>
-            <div>
-                <h1> Test
-            </h1>
-            </div>
 
             <div className="row row-cols-3 g-4">
                 {allAlbums.map((album) => (
@@ -90,7 +86,12 @@ const AddAlbum = () => {
                         title={album.title}
                         artist={album.artist}
                         label={album.label}
-                        trackno={album.track_total}
+                        track_total={album.track_total}
+                        id={album._id}
+                        setTitle
+                        setArtist
+                        setTrackno
+                        setLabel
                         handleClick={() => deleteAlbum(album._id)}
                     />
 
