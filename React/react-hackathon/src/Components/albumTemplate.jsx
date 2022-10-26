@@ -11,10 +11,11 @@ function Album({handleClick, title, artist, track_total, label, editButton, id})
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const click = async () => {
-    EditAlbum(title, artist, label, track_total, id);
-    await handleClose();
-  }
+  // this is the problem. 
+  // const click = async ({title, artist, label, track_total, id}) => {
+  //   EditAlbum({title, artist, label, track_total, id});
+  //   await handleClose();
+  // }
 
     return(
         <>
@@ -61,7 +62,8 @@ function Album({handleClick, title, artist, track_total, label, editButton, id})
           <Button variant="secondary" onClick={handleClose}>
             Close without editing
           </Button>
-          <Button variant="primary" onClick={click}>Save Changes</Button>
+          {/* <Button variant="primary" onClick={click(title, artist, label, track_total, id)}>Save Changes</Button> */}
+          {/*this is also the problem*/}
         </Modal.Footer>
       </Modal>
 

@@ -11,7 +11,7 @@ const EditAlbum = async ({title, artist, track_total, label, id}) => {
                 artist,
                 track_total,
                 label
-            })
+            });
             console.log("Response:", res);
         } catch (err) {
 
