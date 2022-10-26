@@ -1,15 +1,13 @@
 let express = require('express');
-let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
-let mongoDb = require('./db');
-const cors = require('cors')
 const app = express();
+const cors = require('cors')
+app.use(bodyParser.json());
+app.use(cors());
 
 const albumRoutes = require('./routes/albums.route.js');
-app.use(bodyParser.json());
 
 app.use(albumRoutes);
-app.use(cors());
 
 app.use((err, req, res, next) => {
     console.log(err);

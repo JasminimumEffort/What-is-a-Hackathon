@@ -12,10 +12,10 @@ import GetAlbums from './Components/checkGet';
 function App1(){
     return(
         <div>
-            {/* <AddAlbum/> */}
+            <AddAlbum/>
             {/* <ViewAlbums/>
-            <InputFields/> */}
-            <GetAlbums/>
+            <InputFields/>
+            {/* <GetAlbums/> */}
         </div>
     )
 };
