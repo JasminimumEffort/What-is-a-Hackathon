@@ -3,19 +3,29 @@ import EditAlbum from './EditAlbum';
 import {useState} from 'react';
 // import{ BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
 
-function Album({handleClick, title, artist, track_total, label, editButton, id}){
+function Album({handleClick, title, setTitle, artist, setArtist, track_total, setTrackno, label, setLabel, editButton, id}){
 
   const [show, setShow] = useState(false);
-  
+  // const [handleTitle, setHandleTitle] = useState("");
+  // const [handleArtist, setHandleArtist] = useState("");
+  // const [handleLabel, setHandleLabel] = useState("");
+  // const [handleTrackno, setHandleTrackno] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // this is the problem. 
-  // const click = async ({title, artist, label, track_total, id}) => {
-  //   EditAlbum({title, artist, label, track_total, id});
-  //   await handleClose();
-  // }
+  // setHandleTitle(title);
+  // setHandleArtist(artist);
+  // setHandleLabel(label);
+  // setHandleTrackno(track_total);
+
+
+  // this is the problem. {title, artist, label, track_total, id} Not passing updated values through
+  const click = async () => {
+    console.log(track_total, id)
+    EditAlbum({title, artist, label, track_total, id});
+    await handleClose();
+  }
 
     return(
         <>
@@ -45,16 +55,16 @@ function Album({handleClick, title, artist, track_total, label, editButton, id})
               Edit This Album:
             <div className="form-group">
                     <label> Album name: </label>
-                    <input type="text" className="form-control" id="AlbumName" onChange={(e) => title = (e.target.value)} />
+                    <input type="text" className="form-control" id="AlbumName" onChange={(e) =>setTitle(e)} />
                     <br />
                     <label> Album Artist: </label>
-                    <input type="text" className="form-control" id="AlbumArtist" onChange={(e) => artist = (e.target.value)} />
+                    <input type="text" className="form-control" id="AlbumArtist" onChange={(e) => setArtist(e)} />
                     <br />
                     <label> Total Tracks: </label>
-                    <input type="text" className="form-control" id="AlbumTrackTotal" onChange={(e) => track_total =(e.target.value)} />
+                    <input type="text" className="form-control" id="AlbumTrackTotal" onChange={(e) => setTrackno(e)} />
                     <br />
                     <label> Record Label: </label>
-                    <input type="text" className="form-control" id="AlbumLabel" onChange={(e) => label = (e.target.value)} />
+                    <input type="text" className="form-control" id="AlbumLabel" onChange={(e) => setLabel(e)} />
                 </div>
             </form>
         </Modal.Body>
@@ -62,8 +72,8 @@ function Album({handleClick, title, artist, track_total, label, editButton, id})
           <Button variant="secondary" onClick={handleClose}>
             Close without editing
           </Button>
-          {/* <Button variant="primary" onClick={click(title, artist, label, track_total, id)}>Save Changes</Button> */}
-          {/*this is also the problem*/}
+          <Button variant="primary" onClick={click}>Save Changes</Button>
+          {/*this is also the problem(title, artist, label, track_total, id)*/}
         </Modal.Footer>
       </Modal>
 
