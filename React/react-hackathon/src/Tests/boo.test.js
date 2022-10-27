@@ -8,7 +8,6 @@ const { expect } = require("chai");
 describe("create test", function () {
   this.timeout(90_000); 
 
-
   it("should create an album", async () => {
     const driver = await new Builder().forBrowser("chrome").build();
     try {
@@ -40,8 +39,7 @@ describe("create test", function () {
       const driver = await new Builder().forBrowser("chrome").build();
       try {
         await driver.get("http://localhost:3000/");
-        const dagger = await driver.wait(until.elementLocated(By.css("#root > div > div.row.row-cols-3.g-4 > div:nth-child(4) > div > button:nth-child(5)")));
-        await dagger.click();
+        await driver.wait(until.elementLocated(By.css("#root > div > div.row.row-cols-3.g-4 > div:nth-child(4) > div > button:nth-child(5)"))).click(); //this is the problem 
         const modal = await driver.wait(until.elementLocated(By.css("body > div.fade.modal.show > div > div")));
         const totalTrack = await driver.findElement(By.id("AlbumTrackTotal"));
         await totalTrack.sendKeys("18")
@@ -55,27 +53,21 @@ describe("create test", function () {
     });
 })
 
-describe("ex3 tests", function () {
+describe("Delete Tests", function () {
     this.timeout(90_000); 
   
   
-//     it("should find Bluey", async () => {
-//       const driver = await new Builder().forBrowser("chrome").build();
-//       try {
-//         await driver.get("http://localhost:3000/testing/ex3");
-//         const SearchInput= await driver.findElement(By.id("filmTitle"));
-//         await SearchInput.sendKeys("Bluey");
-//         await (await driver.findElement(By.css("#root > div > div.container > form > div > div > button"))).click();
-//         const result = await driver.wait(until.elementLocated(By.css("#root > div > div.container > div.container > div > div:nth-child(1) > div > div > div")));
-//         expect(await result.getText()).to.equal("Bluey");
-//         const pic = await driver.findElement(By.css("#root > div > div.container > div.container > div > div:nth-child(1) > div > img"));
-//         await pic.click();
-//         const newText = await driver.wait(until.elementLocated(By.css("#root > div > div:nth-child(3) > div > div > div")));
-//         expect(await newText.getText()).to.equal("Bluey");
-//         const redirect = await driver.getCurrentUrl();
-//         expect(redirect).to.equal("http://localhost:3000/filmDetails/tt7678620");
-//       } finally {
-//        await driver.quit();
-//       }
-//     });
+    it("should find the aforementioned album and yeet it", async () => {
+      const driver = await new Builder().forBrowser("chrome").build();
+      try {
+        await driver.get("http://localhost:3000/");
+        const deleteButton = await driver.findElement(By.css("#root > div > div.row.row-cols-3.g-4 > div:nth-child(4) > div > button:nth-child(6)"));
+        await deleteButton.click();
+        const result = await driver.findElement(By.css("#root > div > div.row.row-cols-3.g-4"));
+        const count = await result.childElementCount
+        expect(count).to.equal("1");
+      } finally {
+       await driver.quit();
+      }
+    });
 })
