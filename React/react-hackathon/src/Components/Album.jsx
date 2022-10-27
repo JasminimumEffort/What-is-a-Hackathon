@@ -24,3 +24,6 @@ function Album({ id, handleClick, title,  artist,  track_total,  label, handleSh
 }
 
 export default Album;
+
+// <input class = "btn btn primary" variant = "outline-info" type="button" value = "Edit Album" onClick={() => handleShow({title, artist, track_total, label, id})}/>
+{/* <input class = "btn btn primary" variant = "outline-info" value = "Delete Album" variant="primary" type="button" onClick={handleClick}/> */}

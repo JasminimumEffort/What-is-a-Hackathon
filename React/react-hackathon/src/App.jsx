@@ -30,6 +30,8 @@ function App() {
     return(
         <div>
             <CreateAlbum getAlbums={getAlbums}/>
+            <br/>
+            <br/>
             <ViewAlbums allAlbums={allAlbums} setAllAlbums={setAllAlbums} handleShow={setCurrentAlbum}/>
             {currentAlbum && <EditModal currentAlbum={currentAlbum} getAlbums={getAlbums} handleClose={() => setCurrentAlbum(null)}/>}
         </div>

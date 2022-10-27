@@ -7,6 +7,7 @@ chai.use(chaiHttp); // adds the http plugin
 const server = require("../index"); // imports the server so I can run it in the test and send requests to it
 
 const { albumModel } = require("../album");
+const { default: mongoose } = require("mongoose");
 
 describe("albumtests", () => {
     
@@ -33,7 +34,7 @@ describe("albumtests", () => {
             "title": "Red - Taylor's Version",
             "artist": "Taylor Swift",
             "label": "Universal",
-            "track_total": "15"
+            "track_total": '15'
             }
         chai.request(server).post("/createAlbum").send(newAlbum).end((err, res) => {
             chai.expect(err).to.be.null;
@@ -69,8 +70,12 @@ describe("albumtests", () => {
       chai.request(server).delete("/removeAlbum/" + sweetFreedom._id).end((err, res) => {
             chai.expect(err).to.be.null;
             chai.expect(res.status).to.equal(200);
-            chai.expect(res.body).to.not.include(goodDog)
+            chai.expect(res.body).to.not.include(sweetFreedom)
             done(); //tells mocha the test has finished
         });
     });
+
+    after((done) => {
+        mongoose.disconnect(()=> done());
+    })
 })

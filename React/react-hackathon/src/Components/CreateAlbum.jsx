@@ -46,7 +46,8 @@ const CreateAlbum = ({getAlbums}) => {
                     <label> Record Label: </label>
                     <input type="text" className="form-control" id="AlbumLabel" onChange={(e) => setLabel(e.target.value)} />
                     <br />
-                    <button type="submit">CREATE ALBUM</button>
+                    <button type="submit"><input class = "btn btn primary" type = "button" value ="Create Album"/></button>
+                    
                 </div>
             </form>
         </div>

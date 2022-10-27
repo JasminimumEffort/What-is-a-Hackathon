@@ -52,10 +52,10 @@ const EditModal = ({ currentAlbum, handleClose, getAlbums}) => {
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" id = "CloseButton" onClick={handleClose}>
           Close without editing
 </Button>
-        <Button variant="primary" onClick={handleClick}>Save Changes</Button>
+        <Button variant="primary" id = "SaveEditButton" onClick={handleClick}>Save Changes</Button>
         {/*this is also the problem(title, artist, label, track_total, id)*/}
       </Modal.Footer>
     </Modal>
