@@ -1,23 +1,39 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import'./App.css';
-import ViewAlbums from './Components/viewAlbums';
-import AddAlbum from './Components/addAlbum';
-import InputFields from './Components/InputFields';
+import ViewAlbums from './Components/ViewAlbums';
+import CreateAlbum from './Components/CreateAlbum';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Button, Col, Container, Nav, Row,
 } from 'react-bootstrap';
-import GetAlbums from './Components/checkGet';
+import EditModal from './Components/EditModal';
+import axios from 'axios';
 
-function App1(){
+function App() {
+    const [allAlbums, setAllAlbums] = useState([]);
+    const [currentAlbum, setCurrentAlbum] = useState("");
+
+    const getAlbums = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:1296/GetAllAlbums');
+            const inf = res.data
+            setAllAlbums(inf);
+
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => { getAlbums() }, []);
+
     return(
         <div>
-            <AddAlbum/>
-            {/* <ViewAlbums/>
-            <InputFields/>
-            {/* <GetAlbums/> */}
+            <CreateAlbum getAlbums={getAlbums}/>
+            <ViewAlbums allAlbums={allAlbums} setAllAlbums={setAllAlbums} handleShow={setCurrentAlbum}/>
+            {currentAlbum && <EditModal currentAlbum={currentAlbum} getAlbums={getAlbums} handleClose={() => setCurrentAlbum(null)}/>}
         </div>
     )
 };
 
-export default App1
+export default App;

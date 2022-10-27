@@ -28,8 +28,9 @@ router.post("/createAlbum", async (req, res, next) => {
 router.patch("/updateAlbum/:id", async (req, res, next) => {
     // if(!req.body.title) return next({status: 400, message: "No Album Name"})
     try{
-        await albumModel.findByIdAndUpdate(req.params.id, req.query);
-        const newAlbum = await albumModel.findById(req.params.id);
+        const newAlbum = await albumModel.findByIdAndUpdate(req.params.id, req.body , {
+            new: true
+        });
         return res.send(newAlbum);
     } catch(err) {
         return next(err);

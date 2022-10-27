@@ -1,46 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Album from './albumTemplate';
+import Album from './Album';
 import EditAlbum from './EditAlbum'
+import { Button, Modal } from 'bootstrap';
 
 
-const AddAlbum = () => {
+const CreateAlbum = ({getAlbums}) => {
 
     const [title, setTitle] = useState("");
     const [label, setLabel] = useState("");
     const [artist, setArtist] = useState("");
     const [track_total, setTrackno] = useState("");
-    const [allAlbums, setAllAlbums] = useState([]);
-
-    const updateTitle = (event) => {
-        event.preventDefault();
-        setTitle(event.target.value);
-    };
-
-    const getAlbums = async () => {
-
-        try {
-            const res = await axios.get('http://localhost:1296/GetAllAlbums');
-            const inf = res.data
-            setAllAlbums(inf);
-
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    useEffect(() => {getAlbums()}, []);
-
-    const deleteAlbum = async (id) => {
-        try {
-            const res = await axios.delete("http://localhost:1296/removeAlbum/" + id)
-            console.log("Response:", res);
-            setAllAlbums(res.data);
-        } catch (err) {
-    
-        }
-    }
 
     const AddDeets = async (e) => {
         e.preventDefault();
@@ -78,27 +49,8 @@ const AddAlbum = () => {
                     <button type="submit">CREATE ALBUM</button>
                 </div>
             </form>
-
-            <div className="row row-cols-3 g-4">
-                {allAlbums.map((album) => (
-                    <Album
-                        key={album._id}
-                        title={album.title}
-                        artist={album.artist}
-                        label={album.label}
-                        track_total={album.track_total}
-                        id={album._id}
-                        setTitle
-                        setArtist
-                        setTrackno
-                        setLabel
-                        handleClick={() => deleteAlbum(album._id)}
-                    />
-
-                ))}
-            </div>
         </div>
     );
 };
 
-export default AddAlbum;
+export default CreateAlbum;
