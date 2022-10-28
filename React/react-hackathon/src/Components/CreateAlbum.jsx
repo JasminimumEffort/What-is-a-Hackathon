@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import Album from './Album';
-import EditAlbum from './EditAlbum'
+import { useState } from 'react';
 import { Button, Modal } from 'bootstrap';
+import "../App.css";
 
 
 const CreateAlbum = ({getAlbums}) => {
@@ -31,6 +30,7 @@ const CreateAlbum = ({getAlbums}) => {
 
     return (
         <div>
+            <container>
             <form onSubmit={AddDeets}>
                 Add an Album:
             <div className="form-group">
@@ -50,6 +50,7 @@ const CreateAlbum = ({getAlbums}) => {
                     
                 </div>
             </form>
+            </container>
         </div>
     );
 };

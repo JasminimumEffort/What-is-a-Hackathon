@@ -12,6 +12,7 @@ function ViewAlbums({allAlbums, setAllAlbums, handleShow}) {
         }
     }
     return (
+
         
         <div className="row row-cols-3 g-4">
         {allAlbums.map((album) => (
@@ -27,7 +28,7 @@ function ViewAlbums({allAlbums, setAllAlbums, handleShow}) {
             />
 
         ))}
-    </div>
+        </div>
     )
 }
 export default ViewAlbums;

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import'./App.css';
-import ViewAlbums from './Components/ViewAlbums';
+import ViewAlbums from './Components/viewAlbums';
 import CreateAlbum from './Components/CreateAlbum';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -8,10 +7,15 @@ import {
 } from 'react-bootstrap';
 import EditModal from './Components/EditModal';
 import axios from 'axios';
+import'./App.css';
+import CreateModal from "./Components/CreateModal";
+import Home from "./Components/Home"
 
 function App() {
+
     const [allAlbums, setAllAlbums] = useState([]);
     const [currentAlbum, setCurrentAlbum] = useState("");
+    const [createAlbum, setCreateAlbum] = useState("");
 
     const getAlbums = async () => {
 
@@ -29,11 +33,19 @@ function App() {
 
     return(
         <div>
+            <div>
+            <Home handleShowCreate={setCreateAlbum}/>
+            {createAlbum && <CreateModal createAlbum={createAlbum} getAlbums={getAlbums} handleCloseCreate={() => setCreateAlbum(null)}/>}
+            </div>
+            {/* <div>
             <CreateAlbum getAlbums={getAlbums}/>
+            </div> */}
             <br/>
             <br/>
+            <div>
             <ViewAlbums allAlbums={allAlbums} setAllAlbums={setAllAlbums} handleShow={setCurrentAlbum}/>
             {currentAlbum && <EditModal currentAlbum={currentAlbum} getAlbums={getAlbums} handleClose={() => setCurrentAlbum(null)}/>}
+            </div>
         </div>
     )
 };

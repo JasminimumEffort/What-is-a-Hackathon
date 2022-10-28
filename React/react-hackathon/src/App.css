@@ -13,17 +13,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +24,71 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #f3cfe7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+body {
+  background-color: rgb(250, 217, 222) !important;
+  color: white;
+  padding: 40px;
+  font-family: Helvetica;
+  text-align: center;
+}
+
+.form-group {
+  background-color: white;
+  color:black;
+  text-align: center;
+} 
+
+.card {
+  background-color : pink !important;
+  text-align: center;
+  border-color: black !important;
+  border-width: 5% !important;
+}
+
+.button {
+  background-color: white !important;
+}
+
+.dumbTitle {
+  background-color: white;
+  border-width: 20%;
+  border-color: black !important;
+  text-align: center;
+  color: pink;
+  font-size: xx-large;
+  font: helvetica;
+  font-weight: 10%;
+}
+
+.sillyLittleBlurb {
+  background-color: white;
+  border-width: 20%;
+  border-color: black !important;
+  text-align: center;
+  color: pink;
+  font-size: large;
+  font: helvetica;
+  font-weight: 10%;
+}
+
+.Modal {
+  color: pink !important;
 }

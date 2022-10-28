@@ -24,7 +24,7 @@ const EditModal = ({ currentAlbum, handleClose, getAlbums}) => {
   }
 
   return (
-    <Modal
+    <Modal className = "Modal"
       show={!!currentAlbum}
       onHide={handleClose}
       backdrop="static"
