@@ -34,7 +34,7 @@ function App() {
     return(
         <div>
             <div>
-            <Home handleShowCreate={setCreateAlbum}/>
+            <Home handleShowCreate={setCreateAlbum} allAlbums={allAlbums}/>
             {createAlbum && <CreateModal createAlbum={createAlbum} getAlbums={getAlbums} handleCloseCreate={() => setCreateAlbum(null)}/>}
             </div>
             {/* <div>

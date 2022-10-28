@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Album from './Album';
+import AlbumCarousel from './AlbumCarousel';
 
 function ViewAlbums({allAlbums, setAllAlbums, handleShow}) {
     const deleteAlbum = async (id) => {
@@ -12,7 +13,6 @@ function ViewAlbums({allAlbums, setAllAlbums, handleShow}) {
         }
     }
     return (
-
         
         <div className="row row-cols-3 g-4">
         {allAlbums.map((album) => (
